@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryVariant">#C7C7C7</color>
+    <color name="colorAccent">#404040</color>
+
+    <color name="mainBackground">#F5F5F5</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="lottieBackground">#000000</color>
+</resources>

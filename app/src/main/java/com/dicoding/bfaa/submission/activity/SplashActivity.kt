@@ -22,6 +22,10 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000L)
+        }, DELAY)
+    }
+
+    companion object {
+        private const val DELAY = 1000L
     }
 }

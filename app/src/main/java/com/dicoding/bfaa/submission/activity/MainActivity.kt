@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadJSONFromAssets(): String? {
-        var json: String? = null
+        val json: String?
 
         try {
             val inputStream: InputStream = assets.open("githubuser.json")
@@ -67,10 +67,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun parseJSON() {
         try {
-            val obj = JSONObject(loadJSONFromAssets()!!)
+            val obj = JSONObject(loadJSONFromAssets())
             val usersArray = obj.getJSONArray("users")
 
-            for (i in 0..usersArray.length()) {
+            for (i in 0 until usersArray.length()) {
                 val user = usersArray.getJSONObject(i)
                 val username = user.getString("username")
                 val name = user.getString("name")
@@ -78,20 +78,20 @@ class MainActivity : AppCompatActivity() {
                 val company = user.getString("company")
                 val location = user.getString("location")
                 val repository = user.getInt("repository")
-                val follower = user.getInt("followers")
+                val followers = user.getInt("followers")
                 val following = user.getInt("following")
 
                 val resourceId = resources.getIdentifier(avatar, "drawable", this.packageName)
 
                 val users = User(
-                    username,
-                    name,
-                    resourceId,
-                    company,
-                    location,
-                    repository,
-                    follower,
-                    following
+                    username = username,
+                    name = name,
+                    avatar = resourceId,
+                    company = company,
+                    location = location,
+                    repository = repository,
+                    followers = followers,
+                    following = following
                 )
 
                 list.add(users)

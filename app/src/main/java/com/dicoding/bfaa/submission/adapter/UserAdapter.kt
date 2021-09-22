@@ -3,10 +3,10 @@ package com.dicoding.bfaa.submission.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dicoding.bfaa.submission.databinding.ItemUserBinding
 import com.dicoding.bfaa.submission.entity.User
 import com.dicoding.bfaa.submission.util.OnItemClickCallback
+import com.dicoding.bfaa.submission.util.loadImage
 
 class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -18,10 +18,7 @@ class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<
                 tvUsername.text = user.name
                 tvTotalRepo.text = user.repository.toString()
                 tvTotalFollowers.text = user.followers.toString()
-                Glide.with(itemView.context)
-                    .load(user.avatar)
-                    .circleCrop()
-                    .into(ivPhoto)
+                ivPhoto.loadImage(user.avatar)
             }
         }
     }
@@ -38,9 +35,7 @@ class UserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<
         }
     }
 
-    override fun getItemCount(): Int {
-        return listUser.size
-    }
+    override fun getItemCount(): Int = listUser.size
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback

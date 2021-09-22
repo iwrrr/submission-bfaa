@@ -3,17 +3,13 @@ package com.dicoding.bfaa.submission.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.dicoding.bfaa.submission.databinding.ActivityDetailBinding
 import com.dicoding.bfaa.submission.entity.User
+import com.dicoding.bfaa.submission.util.loadImage
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-
-    companion object {
-        const val EXTRA_USER = "extra_user"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +20,8 @@ class DetailActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
         binding.btnShare.setOnClickListener {
-            val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
             intent = Intent().apply {
                 this.action = Intent.ACTION_SEND
                 this.putExtra(
@@ -61,10 +57,11 @@ class DetailActivity : AppCompatActivity() {
             tvTotalRepo.text = user.repository.toString()
             tvTotalFollowers.text = user.followers.toString()
             tvTotalFollowing.text = user.following.toString()
-            Glide.with(this@DetailActivity)
-                .load(user.avatar)
-                .circleCrop()
-                .into(ivPhoto)
+            ivPhoto.loadImage(user.avatar)
         }
+    }
+
+    companion object {
+        const val EXTRA_USER = "extra_user"
     }
 }

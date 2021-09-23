@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Submission">
         <activity
-            android:name="com.dicoding.bfaa.submission.activity.DetailActivity"
-            android:exported="true" />
-        <activity
             android:name="com.dicoding.bfaa.submission.activity.MainActivity"
             android:exported="true" />
         <activity

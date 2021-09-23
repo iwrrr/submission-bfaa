@@ -8,4 +8,5 @@
     <string name="company">Company</string>
     <string name="location">Location</string>
     <string name="detail_user">Detail User</string>
+    <string name="greeting">Hello,\nDevelopers!</string>
 </resources>

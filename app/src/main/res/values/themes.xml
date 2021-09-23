@@ -17,6 +17,11 @@
         <item name="android:windowBackground">@color/mainBackground</item>
     </style>
 
+    <style name="ExpandedBarTextStyle" parent="Theme.Submission">
+        <item name="android:textSize">0sp</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
     <style name="Toolbar" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorAccent</item>
     </style>
@@ -41,5 +46,9 @@
 
     <style name="TextContent.Constraint.Detail" parent="TextContent.Constraint">
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SearchView">
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

@@ -1,28 +1,39 @@
-package com.dicoding.bfaa.submission.activity
+package com.dicoding.bfaa.submission.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.bfaa.submission.databinding.ActivityDetailBinding
-import com.dicoding.bfaa.submission.entity.User
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.dicoding.bfaa.submission.databinding.FragmentDetailBinding
 import com.dicoding.bfaa.submission.util.loadImage
 
-class DetailActivity : AppCompatActivity() {
+class DetailFragment : Fragment() {
 
-    private lateinit var binding: ActivityDetailBinding
+    private lateinit var binding: FragmentDetailBinding
+    private val args: DetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getDetailUser()
 
         binding.btnBack.setOnClickListener {
-            onBackPressed()
+            requireActivity().onBackPressed()
         }
 
-        val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        val user = args.user
         binding.btnShare.setOnClickListener {
-            intent = Intent().apply {
+            val intent = Intent().apply {
                 this.action = Intent.ACTION_SEND
                 this.putExtra(
                     Intent.EXTRA_TEXT,
@@ -42,13 +53,10 @@ class DetailActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
-        getDetailUser()
     }
 
     private fun getDetailUser() {
-        val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
-
+        val user = args.user
         binding.apply {
             tvUsername.text = user.username
             tvName.text = user.name
@@ -59,9 +67,5 @@ class DetailActivity : AppCompatActivity() {
             tvTotalFollowing.text = user.following.toString()
             ivPhoto.loadImage(user.avatar)
         }
-    }
-
-    companion object {
-        const val EXTRA_USER = "extra_user"
     }
 }

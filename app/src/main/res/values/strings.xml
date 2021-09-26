@@ -7,6 +7,11 @@
     <string name="name">Name</string>
     <string name="company">Company</string>
     <string name="location">Location</string>
-    <string name="detail_user">Detail User</string>
     <string name="greeting">Hello,\nDevelopers!</string>
+    <string name="wait_a_moment">Wait a moment...</string>
+    <string name="url">URL</string>
+    <string name="find_developers_here">Find developers here</string>
+
+    <string name="tab_1">Followers</string>
+    <string name="tab_2">Following</string>
 </resources>

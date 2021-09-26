@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.dicoding.bfaa.submission.fragment.HomeFragment"
+        android:name="com.dicoding.bfaa.submission.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,16 +20,16 @@
     </fragment>
     <fragment
         android:id="@+id/nav_detail"
-        android:name="com.dicoding.bfaa.submission.fragment.DetailFragment"
+        android:name="com.dicoding.bfaa.submission.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
-        <argument
-            android:name="user"
-            app:argType="com.dicoding.bfaa.submission.entity.User" />
+        tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_nav_detail_to_nav_home3"
             app:destination="@id/nav_home"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right" />
+        <argument
+            android:name="user"
+            app:argType="com.dicoding.bfaa.submission.data.model.User" />
     </fragment>
 </navigation>

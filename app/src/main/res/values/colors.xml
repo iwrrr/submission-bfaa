@@ -2,10 +2,16 @@
 <resources>
     <color name="colorPrimary">#FAFAFA</color>
     <color name="colorPrimaryVariant">#C7C7C7</color>
-    <color name="colorAccent">#404040</color>
+    <color name="colorAccent">#222222</color>
 
-    <color name="mainBackground">#F5F5F5</color>
+    <color name="mainBackground">#FFFFFF</color>
     <color name="cardBackground">#FFFFFF</color>
-    <color name="searchBackground">#FFFFFF</color>
+    <color name="searchBackground">#EEEEEE</color>
     <color name="lottieBackground">#000000</color>
+
+    <color name="colorControl">#03A9F4</color>
+
+    <color name="colorEndProgressBar">#03A9F4</color>
+    <color name="colorStartProgressBar">#00ffffff</color>
+    <color name="colorBorder">#DDDDDD</color>
 </resources>

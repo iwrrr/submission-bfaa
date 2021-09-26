@@ -1,4 +1,4 @@
-package com.dicoding.bfaa.submission.activity
+package com.dicoding.bfaa.submission.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.bfaa.submission.databinding.ActivitySplashBinding
+import com.dicoding.bfaa.submission.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

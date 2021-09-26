@@ -1,4 +1,4 @@
-package com.dicoding.bfaa.submission.activity
+package com.dicoding.bfaa.submission.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

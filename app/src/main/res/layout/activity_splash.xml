@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dicoding.bfaa.submission.activity.SplashActivity">
+    tools:context="com.dicoding.bfaa.submission.ui.splash.SplashActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splash"

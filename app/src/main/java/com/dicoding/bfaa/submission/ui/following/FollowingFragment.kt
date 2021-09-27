@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.bfaa.submission.databinding.FragmentFollowBinding
+import com.dicoding.bfaa.submission.model.User
 import com.dicoding.bfaa.submission.ui.adapter.UserAdapter
 import com.dicoding.bfaa.submission.ui.detail.DetailFragment
+import com.dicoding.bfaa.submission.util.OnItemClickCallback
 
 class FollowingFragment : Fragment() {
 
@@ -19,7 +21,7 @@ class FollowingFragment : Fragment() {
     private var _binding: FragmentFollowBinding? = null
     private val binding get() = _binding!!
 
-    private val followersViewModel by viewModels<FollowingViewModel>()
+    private val followingViewModel by viewModels<FollowingViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,21 +41,27 @@ class FollowingFragment : Fragment() {
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
+        adapter.setOnItemClickCallback(object : OnItemClickCallback {
+            override fun onItemClicked(data: User) {
+
+            }
+        })
+
         binding.apply {
             rvUsers.setHasFixedSize(true)
             rvUsers.layoutManager = LinearLayoutManager(activity)
             rvUsers.adapter = adapter
         }
 
-        followersViewModel.setListFollowing(username)
-        followersViewModel.listFollowing.observe(viewLifecycleOwner, { user ->
+        followingViewModel.setListFollowing(username)
+        followingViewModel.listFollowing.observe(viewLifecycleOwner, { user ->
             if (user != null) {
                 adapter.setList(user)
                 binding.tvNotFound.visibility = if (user.isNotEmpty()) View.GONE else View.VISIBLE
             }
         })
 
-        followersViewModel.isLoading.observe(viewLifecycleOwner, {
+        followingViewModel.isLoading.observe(viewLifecycleOwner, {
             showLoading(it)
         })
     }

@@ -1,8 +1,8 @@
 package com.dicoding.bfaa.submission.networking
 
-import com.dicoding.bfaa.submission.data.model.DetailUser
-import com.dicoding.bfaa.submission.data.model.User
-import com.dicoding.bfaa.submission.data.model.UserResponse
+import com.dicoding.bfaa.submission.model.DetailUser
+import com.dicoding.bfaa.submission.model.User
+import com.dicoding.bfaa.submission.model.UserResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

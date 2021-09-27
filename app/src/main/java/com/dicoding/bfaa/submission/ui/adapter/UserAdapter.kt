@@ -1,10 +1,10 @@
-package com.dicoding.bfaa.submission.adapter
+package com.dicoding.bfaa.submission.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.bfaa.submission.data.model.User
 import com.dicoding.bfaa.submission.databinding.ItemUserBinding
+import com.dicoding.bfaa.submission.model.User
 import com.dicoding.bfaa.submission.util.OnItemClickCallback
 import com.dicoding.bfaa.submission.util.loadImage
 

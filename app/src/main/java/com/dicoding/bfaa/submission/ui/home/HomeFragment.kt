@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.bfaa.submission.adapter.UserAdapter
-import com.dicoding.bfaa.submission.data.model.User
 import com.dicoding.bfaa.submission.databinding.FragmentHomeBinding
+import com.dicoding.bfaa.submission.model.User
+import com.dicoding.bfaa.submission.ui.adapter.UserAdapter
 import com.dicoding.bfaa.submission.util.OnItemClickCallback
 
 class HomeFragment : Fragment() {
@@ -95,6 +95,7 @@ class HomeFragment : Fragment() {
         binding.apply {
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
             tvLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+            lottie.visibility = View.GONE
         }
     }
 }

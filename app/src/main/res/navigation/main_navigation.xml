@@ -30,6 +30,6 @@
             app:exitAnim="@anim/to_right" />
         <argument
             android:name="user"
-            app:argType="com.dicoding.bfaa.submission.data.model.User" />
+            app:argType="com.dicoding.bfaa.submission.model.User" />
     </fragment>
 </navigation>

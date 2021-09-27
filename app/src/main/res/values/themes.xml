@@ -42,6 +42,7 @@
 
     <style name="TextContent.Constraint.Detail" parent="TextContent.Constraint">
         <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="SearchView">

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.bfaa.submission.adapter.UserAdapter
 import com.dicoding.bfaa.submission.databinding.FragmentFollowBinding
+import com.dicoding.bfaa.submission.ui.adapter.UserAdapter
 import com.dicoding.bfaa.submission.ui.detail.DetailFragment
 
 class FollowersFragment : Fragment() {
@@ -49,6 +49,7 @@ class FollowersFragment : Fragment() {
         followersViewModel.listFollowers.observe(viewLifecycleOwner, { user ->
             if (user != null) {
                 adapter.setList(user)
+                binding.tvNotFound.visibility = if (user.isNotEmpty()) View.GONE else View.VISIBLE
             }
         })
 

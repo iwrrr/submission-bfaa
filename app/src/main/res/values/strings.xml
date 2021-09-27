@@ -14,4 +14,5 @@
 
     <string name="tab_1">Followers</string>
     <string name="tab_2">Following</string>
+    <string name="no_users">No users</string>
 </resources>

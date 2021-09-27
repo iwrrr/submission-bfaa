@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.bfaa.submission.data.model.DetailUser
+import com.dicoding.bfaa.submission.model.DetailUser
 import com.dicoding.bfaa.submission.networking.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback

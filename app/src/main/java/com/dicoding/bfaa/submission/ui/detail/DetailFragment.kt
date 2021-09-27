@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.bfaa.submission.R
-import com.dicoding.bfaa.submission.adapter.SectionPagerAdapter
 import com.dicoding.bfaa.submission.databinding.FragmentDetailBinding
+import com.dicoding.bfaa.submission.ui.adapter.SectionPagerAdapter
 import com.dicoding.bfaa.submission.util.loadImage
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

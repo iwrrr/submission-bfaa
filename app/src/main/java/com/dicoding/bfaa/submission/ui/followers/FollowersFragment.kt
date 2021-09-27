@@ -18,8 +18,7 @@ class FollowersFragment : Fragment() {
     private lateinit var adapter: UserAdapter
     private lateinit var username: String
 
-    private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentFollowBinding
 
     private val followersViewModel by viewModels<FollowersViewModel>()
 
@@ -27,8 +26,8 @@ class FollowersFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentFollowBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentFollowBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -64,11 +63,6 @@ class FollowersFragment : Fragment() {
         followersViewModel.isLoading.observe(viewLifecycleOwner, {
             showLoading(it)
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun showLoading(isLoading: Boolean) {

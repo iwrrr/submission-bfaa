@@ -19,8 +19,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: UserAdapter
     private lateinit var searchView: SearchView
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
 
     private val userViewModel by viewModels<UserViewModel>()
 
@@ -28,7 +27,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -67,11 +66,6 @@ class HomeFragment : Fragment() {
         })
 
         searchUser()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun searchUser() {

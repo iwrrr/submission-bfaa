@@ -21,8 +21,7 @@ class DetailFragment : Fragment() {
 
     private val args: DetailFragmentArgs by navArgs()
 
-    private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentDetailBinding
 
     private val detailViewModel by viewModels<DetailViewModel>()
 
@@ -30,7 +29,7 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -74,11 +73,6 @@ class DetailFragment : Fragment() {
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     private fun setViewPager() {
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, args.user.username)
@@ -101,9 +95,9 @@ class DetailFragment : Fragment() {
             if (user != null) {
                 binding.apply {
                     tvUsername.text = user.username
-                    tvName.text = user.name ?: "-"
-                    tvLocation.text = user.location ?: "No location"
-                    tvCompany.text = user.company ?: "No company"
+                    tvName.text = user.name ?: getString(R.string.no_name)
+                    tvLocation.text = user.location ?: getString(R.string.no_location)
+                    tvCompany.text = user.company ?: getString(R.string.no_company)
                     tvTotalRepo.text = user.repository.toString()
                     tvTotalFollowers.text = user.followers.toString()
                     tvTotalFollowing.text = user.following.toString()

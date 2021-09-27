@@ -15,4 +15,8 @@
     <string name="tab_1">Followers</string>
     <string name="tab_2">Following</string>
     <string name="no_users">No users</string>
+    <string name="avatar">Avatar</string>
+    <string name="no_location">No location</string>
+    <string name="no_company">No company</string>
+    <string name="no_name">-</string>
 </resources>

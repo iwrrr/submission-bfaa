@@ -36,6 +36,7 @@ class FollowingViewModel : ViewModel() {
             override fun onFailure(call: Call<ArrayList<User>>, t: Throwable) {
                 _isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
+                t.printStackTrace()
             }
         })
     }

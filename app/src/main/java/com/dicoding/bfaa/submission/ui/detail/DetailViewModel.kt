@@ -33,6 +33,7 @@ class DetailViewModel : ViewModel() {
             override fun onFailure(call: Call<DetailUser>, t: Throwable) {
                 _isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
+                t.printStackTrace()
             }
         })
     }

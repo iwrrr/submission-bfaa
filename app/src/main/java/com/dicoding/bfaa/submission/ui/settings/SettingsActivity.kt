@@ -22,6 +22,10 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+
         val switchTheme = binding.switchTheme
 
         val pref = SettingPreferences.getInstance(dataStore)

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -98,12 +97,10 @@ class HomeFragment : Fragment() {
                     R.id.favorite -> {
                         view?.findNavController()
                             ?.navigate(R.id.action_nav_home_to_favoriteFragment)
-                        Toast.makeText(requireContext(), "Favorite", Toast.LENGTH_SHORT).show()
                     }
                     R.id.settings -> {
                         view?.findNavController()
                             ?.navigate(R.id.action_nav_home_to_settingsActivity)
-                        Toast.makeText(requireContext(), "Settings", Toast.LENGTH_SHORT).show()
                     }
                 }
                 true

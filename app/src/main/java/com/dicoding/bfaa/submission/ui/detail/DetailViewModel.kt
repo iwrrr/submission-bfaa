@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.bfaa.submission.database.FavoriteUser
 import com.dicoding.bfaa.submission.model.DetailUser
 import com.dicoding.bfaa.submission.networking.ApiConfig
 import com.dicoding.bfaa.submission.repository.FavoriteRepository
@@ -43,9 +42,10 @@ class DetailViewModel(application: Application) : ViewModel() {
         })
     }
 
-    fun getFavoriteUser(): LiveData<List<FavoriteUser>> = mFavoriteRepository.getFavoriteUser()
+//    fun getFavoriteUser(): LiveData<List<FavoriteUser>> = mFavoriteRepository.getFavoriteUser()
 
-    fun addToFavorite(id: Int, username: String) = mFavoriteRepository.addToFavorite(id, username)
+    fun addToFavorite(id: Int, username: String, avatar: String, url: String) =
+        mFavoriteRepository.addToFavorite(id, username, avatar, url)
 
     fun removeFromFavorite(id: Int) = mFavoriteRepository.removeFromFavorite(id)
 

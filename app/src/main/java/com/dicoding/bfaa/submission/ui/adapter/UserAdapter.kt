@@ -2,11 +2,13 @@ package com.dicoding.bfaa.submission.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.bfaa.submission.databinding.ItemUserBinding
+import com.dicoding.bfaa.submission.helper.OnItemClickCallback
+import com.dicoding.bfaa.submission.helper.UserDiffCallback
+import com.dicoding.bfaa.submission.helper.loadImage
 import com.dicoding.bfaa.submission.model.User
-import com.dicoding.bfaa.submission.util.OnItemClickCallback
-import com.dicoding.bfaa.submission.util.loadImage
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -39,10 +41,12 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun getItemCount(): Int = list.size
 
-    fun setList(users: ArrayList<User>) {
+    fun setList(users: List<User>) {
+        val diffCallback = UserDiffCallback(list, users)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         list.clear()
         list.addAll(users)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

@@ -19,4 +19,15 @@
     <string name="no_location">No location</string>
     <string name="no_company">No company</string>
     <string name="no_name">-</string>
+    <string name="menu">Menu</string>
+    <string name="favorite">Favorite</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="favorite_user">Favorite User</string>
+    <string name="dark_mode">Dark Mode</string>
+    <!-- Preference Titles -->
+
+    <!-- Messages Preferences -->
+
+    <!-- Sync Preferences -->
 </resources>

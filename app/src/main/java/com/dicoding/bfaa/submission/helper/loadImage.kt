@@ -1,4 +1,4 @@
-package com.dicoding.bfaa.submission.util
+package com.dicoding.bfaa.submission.helper
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

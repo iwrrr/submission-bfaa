@@ -4,22 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.bfaa.submission.R
 import com.dicoding.bfaa.submission.databinding.FragmentHomeBinding
+import com.dicoding.bfaa.submission.helper.OnItemClickCallback
 import com.dicoding.bfaa.submission.model.User
 import com.dicoding.bfaa.submission.ui.adapter.UserAdapter
-import com.dicoding.bfaa.submission.util.OnItemClickCallback
 
 class HomeFragment : Fragment() {
 
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: UserAdapter
     private lateinit var searchView: SearchView
-
-    private lateinit var binding: FragmentHomeBinding
 
     private val userViewModel by viewModels<UserViewModel>()
 
@@ -37,7 +39,6 @@ class HomeFragment : Fragment() {
         searchView = binding.searchView
 
         adapter = UserAdapter()
-        adapter.notifyDataSetChanged()
 
         binding.apply {
             rvUsers.layoutManager = LinearLayoutManager(activity)
@@ -66,6 +67,8 @@ class HomeFragment : Fragment() {
         })
 
         searchUser()
+
+        showPopup()
     }
 
     private fun searchUser() {
@@ -83,6 +86,30 @@ class HomeFragment : Fragment() {
                 return false
             }
         })
+    }
+
+    private fun showPopup() {
+        val btnMenu = binding.btnMenu
+        btnMenu.setOnClickListener {
+            val popupMenu = PopupMenu(this.context, btnMenu)
+            popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.favorite -> {
+                        view?.findNavController()
+                            ?.navigate(R.id.action_nav_home_to_favoriteFragment)
+                        Toast.makeText(requireContext(), "Favorite", Toast.LENGTH_SHORT).show()
+                    }
+                    R.id.settings -> {
+                        view?.findNavController()
+                            ?.navigate(R.id.action_nav_home_to_settingsActivity)
+                        Toast.makeText(requireContext(), "Settings", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                true
+            }
+            popupMenu.show()
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

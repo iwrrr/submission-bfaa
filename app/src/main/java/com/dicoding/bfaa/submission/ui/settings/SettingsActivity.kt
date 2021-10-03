@@ -1,34 +1,28 @@
-package com.dicoding.bfaa.submission.ui.splash
+package com.dicoding.bfaa.submission.ui.settings
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.bfaa.submission.databinding.ActivitySplashBinding
+import com.dicoding.bfaa.submission.databinding.ActivitySettingsBinding
 import com.dicoding.bfaa.submission.helper.ViewModelFactory
-import com.dicoding.bfaa.submission.ui.main.MainActivity
-import com.dicoding.bfaa.submission.ui.settings.SettingPreferences
-import com.dicoding.bfaa.submission.ui.settings.SettingsViewModel
 
-class SplashActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var binding: ActivitySettingsBinding
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
+        val switchTheme = binding.switchTheme
 
         val pref = SettingPreferences.getInstance(dataStore)
         val viewModel =
@@ -37,19 +31,16 @@ class SplashActivity : AppCompatActivity() {
         viewModel.getThemeSettings().observe(this, { isDarkModeActive ->
             if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                switchTheme.isChecked = true
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                switchTheme.isChecked = false
             }
         })
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, DELAY)
-    }
-
-    companion object {
-        private const val DELAY = 1000L
+        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            switchTheme.isChecked = isChecked
+            viewModel.saveThemeSettings(isChecked)
+        }
     }
 }

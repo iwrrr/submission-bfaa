@@ -16,4 +16,10 @@ data class FavoriteUser(
 
     @ColumnInfo(name = "username")
     val username: String,
+
+    @ColumnInfo(name = "avatar")
+    val avatar: String,
+
+    @ColumnInfo(name = "url")
+    val url: String,
 ) : Parcelable

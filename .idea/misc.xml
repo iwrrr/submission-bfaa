@@ -14,15 +14,23 @@
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/favorite_toggle.xml" value="0.1" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/ic_empty.xml" value="0.23344594594594595" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/ic_followers.xml" value="0.23344594594594595" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/ic_menu.xml" value="0.1763888888888889" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/ic_repo.xml" value="0.23344594594594595" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/drawable/ic_url.xml" value="0.23344594594594595" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/activity_detail.xml" value="0.5" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/activity_settings.xml" value="0.18" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/activity_splash.xml" value="0.34375" />
-        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_detail.xml" value="0.75" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/favorite_fragment.xml" value="0.20057859209257473" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_detail.xml" value="0.18" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_follow.xml" value="0.22297297297297297" />
-        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/fragment_settings.xml" value="0.18" />
         <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/layout/item_user.xml" value="0.507514450867052" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/menu/popup_menu.xml" value="0.18" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/xml/preferences.xml" value="0.2" />
+        <entry key="..\:/Dev/Studi Independen/Android/Belajar Fundamental Aplikasi Android/Submission/app/src/main/res/xml/root_preferences.xml" value="0.22" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package com.dicoding.bfaa.submission.util
+package com.dicoding.bfaa.submission.helper
 
 import com.dicoding.bfaa.submission.model.User
 

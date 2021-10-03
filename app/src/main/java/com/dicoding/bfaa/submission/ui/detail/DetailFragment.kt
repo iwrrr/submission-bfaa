@@ -14,8 +14,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.bfaa.submission.R
 import com.dicoding.bfaa.submission.databinding.FragmentDetailBinding
 import com.dicoding.bfaa.submission.helper.ViewModelFactory
+import com.dicoding.bfaa.submission.helper.loadImage
 import com.dicoding.bfaa.submission.ui.adapter.SectionPagerAdapter
-import com.dicoding.bfaa.submission.util.loadImage
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.CoroutineScope
@@ -26,9 +26,8 @@ import kotlinx.coroutines.withContext
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
-    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var viewModel: DetailViewModel
 
-    //    private val detailViewModel by viewModels<DetailViewModel>()
     private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -46,9 +45,9 @@ class DetailFragment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        detailViewModel = obtainViewModel(activity as AppCompatActivity)
+        viewModel = obtainViewModel(activity as AppCompatActivity)
 
-        detailViewModel.isLoading.observe(viewLifecycleOwner, {
+        viewModel.isLoading.observe(viewLifecycleOwner, {
             showLoading(it)
         })
 
@@ -56,7 +55,7 @@ class DetailFragment : Fragment() {
 
         setViewPager()
 
-        detailViewModel.user.observe(viewLifecycleOwner, { user ->
+        viewModel.user.observe(viewLifecycleOwner, { user ->
             binding.btnShare.setOnClickListener {
                 val intent = Intent().apply {
                     this.action = Intent.ACTION_SEND
@@ -101,12 +100,14 @@ class DetailFragment : Fragment() {
     }
 
     private fun getDetailUser() {
-        val username = args.user.username
         val id = args.user.id
+        val username = args.user.username
+        val avatar = args.user.avatar
+        val url = args.user.url
         var isChecked = false
 
-        detailViewModel.setDetailUser(username)
-        detailViewModel.user.observe(viewLifecycleOwner, { user ->
+        viewModel.setDetailUser(username)
+        viewModel.user.observe(viewLifecycleOwner, { user ->
             if (user != null) {
                 binding.apply {
                     tvUsername.text = user.username
@@ -122,7 +123,7 @@ class DetailFragment : Fragment() {
         })
 
         CoroutineScope(Dispatchers.IO).launch {
-            val count = detailViewModel.checkUser(id)
+            val count = viewModel.checkUser(id)
             withContext(Dispatchers.Main) {
                 if (count > 0) {
                     binding.toggleFav.isChecked = true
@@ -137,9 +138,9 @@ class DetailFragment : Fragment() {
         binding.toggleFav.setOnClickListener {
             isChecked = !isChecked
             if (isChecked) {
-                detailViewModel.addToFavorite(id, username)
+                viewModel.addToFavorite(id, username, avatar, url)
             } else {
-                detailViewModel.removeFromFavorite(id)
+                viewModel.removeFromFavorite(id)
             }
             binding.toggleFav.isChecked = isChecked
         }

@@ -23,11 +23,13 @@ class FavoriteRepository(application: Application) {
 
     fun getFavoriteUser(): LiveData<List<FavoriteUser>> = mFavoriteUserDao.getFavoriteUser()
 
-    fun addToFavorite(id: Int, username: String) {
+    fun addToFavorite(id: Int, username: String, avatar: String, url: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val user = FavoriteUser(
                 id,
-                username
+                username,
+                avatar,
+                url
             )
             mFavoriteUserDao.addToFavorite(user)
         }

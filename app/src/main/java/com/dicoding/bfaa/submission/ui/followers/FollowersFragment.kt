@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.bfaa.submission.databinding.FragmentFollowBinding
+import com.dicoding.bfaa.submission.helper.OnItemClickCallback
 import com.dicoding.bfaa.submission.model.User
 import com.dicoding.bfaa.submission.ui.adapter.UserAdapter
 import com.dicoding.bfaa.submission.ui.detail.DetailFragment
-import com.dicoding.bfaa.submission.util.OnItemClickCallback
 
 class FollowersFragment : Fragment() {
 
@@ -38,7 +38,6 @@ class FollowersFragment : Fragment() {
         username = args?.getString(DetailFragment.EXTRA_USERNAME).toString()
 
         adapter = UserAdapter()
-        adapter.notifyDataSetChanged()
 
         adapter.setOnItemClickCallback(object : OnItemClickCallback {
             override fun onItemClicked(data: User) {

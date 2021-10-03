@@ -6,24 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.bfaa.submission.R
 import com.dicoding.bfaa.submission.databinding.FragmentDetailBinding
+import com.dicoding.bfaa.submission.helper.ViewModelFactory
 import com.dicoding.bfaa.submission.ui.adapter.SectionPagerAdapter
 import com.dicoding.bfaa.submission.util.loadImage
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailFragment : Fragment() {
 
-    private val args: DetailFragmentArgs by navArgs()
-
     private lateinit var binding: FragmentDetailBinding
+    private lateinit var detailViewModel: DetailViewModel
 
-    private val detailViewModel by viewModels<DetailViewModel>()
+    //    private val detailViewModel by viewModels<DetailViewModel>()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +45,8 @@ class DetailFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+
+        detailViewModel = obtainViewModel(activity as AppCompatActivity)
 
         detailViewModel.isLoading.observe(viewLifecycleOwner, {
             showLoading(it)
@@ -87,8 +95,15 @@ class DetailFragment : Fragment() {
         }.attach()
     }
 
+    private fun obtainViewModel(activity: AppCompatActivity): DetailViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[DetailViewModel::class.java]
+    }
+
     private fun getDetailUser() {
         val username = args.user.username
+        val id = args.user.id
+        var isChecked = false
 
         detailViewModel.setDetailUser(username)
         detailViewModel.user.observe(viewLifecycleOwner, { user ->
@@ -105,6 +120,29 @@ class DetailFragment : Fragment() {
                 }
             }
         })
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = detailViewModel.checkUser(id)
+            withContext(Dispatchers.Main) {
+                if (count > 0) {
+                    binding.toggleFav.isChecked = true
+                    isChecked = true
+                } else {
+                    binding.toggleFav.isChecked = false
+                    isChecked = false
+                }
+            }
+        }
+
+        binding.toggleFav.setOnClickListener {
+            isChecked = !isChecked
+            if (isChecked) {
+                detailViewModel.addToFavorite(id, username)
+            } else {
+                detailViewModel.removeFromFavorite(id)
+            }
+            binding.toggleFav.isChecked = isChecked
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

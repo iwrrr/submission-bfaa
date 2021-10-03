@@ -52,6 +52,19 @@
                 app:srcCompat="@drawable/ic_share"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+            <ToggleButton
+                android:id="@+id/toggleFav"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/favorite_toggle"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="@+id/btnShare"
+                app:layout_constraintEnd_toStartOf="@+id/btnShare"
+                app:layout_constraintTop_toTopOf="@+id/btnShare" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>

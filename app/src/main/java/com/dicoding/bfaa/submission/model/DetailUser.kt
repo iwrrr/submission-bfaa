@@ -6,12 +6,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DetailUser(
-
     @field:SerializedName("id")
-    val id: Int? = null,
+    val id: Int = 0,
 
     @field:SerializedName("login")
-    val username: String? = null,
+    val username: String,
 
     @field:SerializedName("name")
     val name: String? = null,
@@ -29,11 +28,11 @@ data class DetailUser(
     val location: String? = null,
 
     @field:SerializedName("public_repos")
-    val repository: Int? = null,
+    val repository: Int = 0,
 
     @field:SerializedName("followers")
-    val followers: Int? = null,
+    val followers: Int = 0,
 
     @field:SerializedName("following")
-    val following: Int? = null,
+    val following: Int = 0,
 ) : Parcelable

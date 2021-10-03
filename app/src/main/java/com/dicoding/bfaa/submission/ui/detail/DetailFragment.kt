@@ -111,9 +111,9 @@ class DetailFragment : Fragment() {
             if (user != null) {
                 binding.apply {
                     tvUsername.text = user.username
-                    tvName.text = user.name ?: getString(R.string.no_name)
-                    tvLocation.text = user.location ?: getString(R.string.no_location)
-                    tvCompany.text = user.company ?: getString(R.string.no_company)
+                    tvName.text = user.name ?: getString(R.string.empty_data)
+                    tvLocation.text = user.location ?: getString(R.string.empty_data)
+                    tvCompany.text = user.company ?: getString(R.string.empty_data)
                     tvTotalRepo.text = user.repository.toString()
                     tvTotalFollowers.text = user.followers.toString()
                     tvTotalFollowing.text = user.following.toString()

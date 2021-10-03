@@ -150,8 +150,16 @@ class DetailFragment : Fragment() {
         binding.apply {
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
             tvLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+            tvUsername.visibility = if (isLoading) View.GONE else View.VISIBLE
+            toggleFav.visibility = if (isLoading) View.GONE else View.VISIBLE
+            btnShare.visibility = if (isLoading) View.GONE else View.VISIBLE
+            ivPhoto.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvName.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvLocation.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvCompany.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvTotalRepo.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvTotalFollowers.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvTotalFollowing.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvRepo.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvFollowers.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvFollowing.visibility = if (isLoading) View.GONE else View.VISIBLE

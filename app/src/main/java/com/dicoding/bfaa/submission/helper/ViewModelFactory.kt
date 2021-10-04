@@ -8,14 +8,11 @@ import com.dicoding.bfaa.submission.ui.favorite.FavoriteViewModel
 import com.dicoding.bfaa.submission.ui.settings.SettingPreferences
 import com.dicoding.bfaa.submission.ui.settings.SettingsViewModel
 
-class ViewModelFactory private constructor(private val mApplication: Application) :
+class ViewModelFactory private constructor(
+    private val mApplication: Application,
+    private val prefs: SettingPreferences? = null,
+) :
     ViewModelProvider.NewInstanceFactory() {
-
-    private var preferences: SettingPreferences? = null
-
-    constructor(preferences: SettingPreferences) : this(Application()) {
-        this.preferences = preferences
-    }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -27,7 +24,7 @@ class ViewModelFactory private constructor(private val mApplication: Application
                 FavoriteViewModel(mApplication) as T
             }
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
-                preferences?.let { SettingsViewModel(it) } as T
+                prefs?.let { SettingsViewModel(it) } as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
@@ -38,10 +35,13 @@ class ViewModelFactory private constructor(private val mApplication: Application
         private var INSTANCE: ViewModelFactory? = null
 
         @JvmStatic
-        fun getInstance(application: Application): ViewModelFactory {
+        fun getInstance(
+            application: Application,
+            preferences: SettingPreferences? = null,
+        ): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(application)
+                    INSTANCE = ViewModelFactory(application, preferences)
                 }
             }
             return INSTANCE as ViewModelFactory

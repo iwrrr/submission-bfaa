@@ -34,8 +34,7 @@ class FollowersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args = arguments
-        username = args?.getString(DetailFragment.EXTRA_USERNAME).toString()
+        username = arguments?.getString(DetailFragment.EXTRA_USERNAME).toString()
 
         adapter = UserAdapter()
 

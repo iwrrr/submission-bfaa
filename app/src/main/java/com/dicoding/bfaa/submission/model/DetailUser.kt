@@ -1,10 +1,7 @@
 package com.dicoding.bfaa.submission.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class DetailUser(
     @field:SerializedName("id")
     val id: Int = 0,
@@ -35,4 +32,4 @@ data class DetailUser(
 
     @field:SerializedName("following")
     val following: Int = 0,
-) : Parcelable
+)

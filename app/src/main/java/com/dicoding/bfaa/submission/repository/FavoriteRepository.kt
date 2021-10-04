@@ -8,13 +8,10 @@ import com.dicoding.bfaa.submission.database.FavoriteUserDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 class FavoriteRepository(application: Application) {
 
     private val mFavoriteUserDao: FavoriteUserDao
-    private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 
     init {
         val db = FavoriteUserDatabase.getDatabase(application)

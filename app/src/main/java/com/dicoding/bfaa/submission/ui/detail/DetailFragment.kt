@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.bfaa.submission.R
@@ -18,7 +19,6 @@ import com.dicoding.bfaa.submission.helper.loadImage
 import com.dicoding.bfaa.submission.ui.adapter.SectionPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -122,7 +122,7 @@ class DetailFragment : Fragment() {
             }
         })
 
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             val count = viewModel.checkUser(id)
             withContext(Dispatchers.Main) {
                 if (count > 0) {
@@ -150,6 +150,14 @@ class DetailFragment : Fragment() {
         binding.apply {
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
             tvLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
+        showProfile(isLoading)
+        showTabs(isLoading)
+    }
+
+    private fun showProfile(isLoading: Boolean) {
+        binding.apply {
             tvUsername.visibility = if (isLoading) View.GONE else View.VISIBLE
             toggleFav.visibility = if (isLoading) View.GONE else View.VISIBLE
             btnShare.visibility = if (isLoading) View.GONE else View.VISIBLE
@@ -163,6 +171,11 @@ class DetailFragment : Fragment() {
             tvRepo.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvFollowers.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvFollowing.visibility = if (isLoading) View.GONE else View.VISIBLE
+        }
+    }
+
+    private fun showTabs(isLoading: Boolean) {
+        binding.apply {
             tabs.visibility = if (isLoading) View.GONE else View.VISIBLE
             viewPager.visibility = if (isLoading) View.GONE else View.VISIBLE
         }

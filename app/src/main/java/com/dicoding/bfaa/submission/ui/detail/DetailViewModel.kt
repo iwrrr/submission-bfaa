@@ -42,8 +42,6 @@ class DetailViewModel(application: Application) : ViewModel() {
         })
     }
 
-//    fun getFavoriteUser(): LiveData<List<FavoriteUser>> = mFavoriteRepository.getFavoriteUser()
-
     fun addToFavorite(id: Int, username: String, avatar: String, url: String) =
         mFavoriteRepository.addToFavorite(id, username, avatar, url)
 

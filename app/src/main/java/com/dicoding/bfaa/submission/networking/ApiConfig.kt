@@ -1,5 +1,6 @@
 package com.dicoding.bfaa.submission.networking
 
+import com.dicoding.bfaa.submission.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +11,13 @@ class ApiConfig {
     companion object {
         fun getApiService(): ApiService {
             val loggingInterceptor =
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                HttpLoggingInterceptor().setLevel(
+                    if (BuildConfig.DEBUG) {
+                        HttpLoggingInterceptor.Level.BODY
+                    } else {
+                        HttpLoggingInterceptor.Level.NONE
+                    }
+                )
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()
